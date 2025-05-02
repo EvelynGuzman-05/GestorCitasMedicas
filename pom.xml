@@ -24,7 +24,20 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.30.Final</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.sendgrid</groupId>
+            <artifactId>sendgrid-java</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+        
+        
     </dependencies>
    
+  
+    
+    
+
+
     
 </project>

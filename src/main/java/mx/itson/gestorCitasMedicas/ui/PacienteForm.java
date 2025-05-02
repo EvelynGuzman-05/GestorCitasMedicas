@@ -4,8 +4,10 @@
  */
 package mx.itson.gestorCitasMedicas.ui;
 
+import java.io.IOException;
 import mx.itson.gestorCitasMedicas.entidades.Paciente;
 import mx.itson.gestorCitasMedicas.persistencia.PacienteDAO;
+import mx.itson.gestorCitasMedicas.utils.EmailUtil;
 
 
 
@@ -71,7 +73,7 @@ public class PacienteForm extends javax.swing.JDialog {
         btnSave.setBackground(new java.awt.Color(0, 0, 255));
         btnSave.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setText("Save");
+        btnSave.setText("Guardar");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -216,7 +218,13 @@ public class PacienteForm extends javax.swing.JDialog {
     
     if(resultado){
         javax.swing.JOptionPane.showMessageDialog(this, "Paciente registrado exitosamente.", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        try {
+    EmailUtil.enviarCorreo(email, nombre);
+      } catch (IOException ex) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Error al enviar el correo: " + ex.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+}
         this.dispose(); // Cierra el formulario
+        
     } else {
         javax.swing.JOptionPane.showMessageDialog(this, "Ocurrió un error al guardar el paciente.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
     }
