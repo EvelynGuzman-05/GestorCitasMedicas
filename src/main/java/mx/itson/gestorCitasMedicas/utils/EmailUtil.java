@@ -17,7 +17,7 @@ public class EmailUtil {
    // Método para enviar un correo
     public static void enviarCorreo(String email, String nombre) throws IOException {
         // Aquí va tu API Key de SendGrid
-        String apiKey = "Colocar SendGrid Key";
+        String apiKey = "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";
         SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();
         
